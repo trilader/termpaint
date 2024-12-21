@@ -2333,6 +2333,7 @@ static inline void write_color_sgr_values(termpaint_integration *integration, te
 void termpaint_terminal_flush(termpaint_terminal *term, bool full_repaint) {
     termpaint_integration *integration = term->integration;
     full_repaint |= term->force_full_repaint;
+    term->force_full_repaint = false;
     termpaintp_terminal_hide_cursor(term);
     int_puts(integration, "\033[H");
     char speculation_buffer[30];
